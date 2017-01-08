@@ -1,0 +1,95 @@
+<% include _header %>
+
+<link rel="stylesheet" href="/css/app.css">
+
+<style>
+ .content {
+   text-align: center;
+   margin: 40px;
+   padding-top: 10px;
+ }
+ .title {
+   font-size: 32px;
+ }
+ .icon {
+   margin: 20px;
+ }
+</style>
+
+<div class="content">
+  <h2 class="title">Order <%= soft %></h2>
+  <img class="icon" src="<%= icon %>" width="250px" height="250px">
+
+    <% include _page_msg %>
+
+  <div>
+  <%= qrCode %>
+  <%= noInvoice %>
+  </div>
+
+  <% if (qrCode) { %>
+    <img class="qrcode" src="<%= qrCode %>" width="250px" height="250px">
+  <% } else { %>
+    <form class="form" name="pay-form" method="post" action="/api/pay">
+      <input type="hidden" name="soft" value="<%= soft %>">
+
+      <label for="email">Email</label>
+      <input class="field" name="email" type="text" placeholder="username@example.com" /> <br>
+      <div class="field-description">
+        Email address to receive the license key.
+        <div class="validate-msg" id="email-vd-msg"></div>
+      </div>
+      <br>
+      <label for="username">Name</label>
+      <input class="field" name="username" type="text" placeholder="username" /> <br>
+      <div class="field-description">
+        Email and Name will both appear on the license key.
+        <div class="validate-msg" id="username-vd-msg"></div>
+      </div>
+      <br>
+      <!-- <label for="paytype">Pay via</label> -->
+      <input class="radio field" name="paytype" type="radio" value="alipay" checked="true" data-svalue="支付宝支付 ¥<%= price.cn %>" />
+      <span class="radio-desc">支付宝 ¥<%= price.cn %></span>
+      <input class="radio field" name="paytype" type="radio" value="paypal" data-svalue="Pay via Paypal $<%= price.us %>"/>
+      <span class="radio-desc">Paypal $<%= price.us %></span>
+      <br>
+      <input type="submit" id ="store-form-submit" class="try" value="支付宝支付 ¥<%= price.cn %>">
+    </form>
+  <% } %>
+</div>
+
+<script>
+var validator = new FormValidator('pay-form', [{
+    name: 'email',
+    display: 'email',
+    rules: 'required|valid_email'
+}, {
+    name: 'username',
+    rules: 'required|min_length[4]|max_length[15]'
+}], function(errors, event) {
+   var validateNotes = {
+     email: document.getElementById('email-vd-msg'),
+     username: document.getElementById('username-vd-msg')
+   };
+   validateNotes.email.innerText = '';
+   validateNotes.username.innerText = '';
+   if (errors.length > 0) {
+     // Show the errors
+     /* console.log(errors); */
+     errors.forEach(function(e) {
+       validateNotes[e.name].innerText = e.message;
+     });
+   }
+});
+
+function switchPayType(e) {
+   var submitElement = document.getElementById('store-form-submit');
+   submitElement.value = e.target.dataset.svalue;
+}
+
+ var paytypeElements = document.getElementsByName('paytype');
+ paytypeElements.forEach(function (e) { e.onchange = switchPayType; });
+
+</script>
+
+<% include _footer %>

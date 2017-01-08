@@ -1,0 +1,28 @@
+<% include _header %>
+
+<section class="products text-center">
+  <div class="row">
+    <div class="app-page">
+      <h1><%= title %></h1>
+      <h2><%= subTitle %></h2>
+      <img src="<%= icon %>" width="200" height="200" style="margin-bottom: -82px">
+      <img id="img1" src="<%= appImg %>" width="1014">
+      <p><strong><%= title %></strong><%= description %></p>
+      <% features.forEach(function(f) { %>
+        <h3 class="<%= f.side %>"><%= f.title %></h3>
+        <img src="<%= f.img %>" width="1014">
+        <p class="<%= f.side %>"><%= f.description %></p>
+      <% }) %>
+      <h3>Enjoy the monkey!</h3>
+        <img src="<%= icon %>" width="512" height="512">
+        <p><strong>Monkeydown</strong>  version 1.0 is released. There is a lot room to add new features and we keep working on it. We hope you like it!</p>
+        <h3>Try?</h3>
+        <a href="https://pan.baidu.com/s/1eS7ieki" class="try" target="_blank">Download Monkeydown</a>
+        <p class="require">Monkeydown 1.0.1, requires OS X 10.7+</p>
+        <p><a class="preorder" href="/store/monkeydown">Buy Now</a></p>
+    </div>
+  </div>
+</section>
+
+
+<% include _footer %>

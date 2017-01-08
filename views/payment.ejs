@@ -1,0 +1,60 @@
+<% include _header %>
+
+<style>
+ .payment-form-label {
+   display: inline-block;
+   width: 10%;
+   text-align: right;
+   margin-right: 10px;
+ }
+ .payment-form .payment-form-field {
+   display: inline-block;
+   width: 70%;
+ }
+ .payment-form-submit {
+   background-color: rgb(51,160,255);
+   color: white;
+ }
+ .payment-form-submit[disabled] {
+   background-color: rgb(51,60,55);
+   color: white;
+ }
+</style>
+<header>
+  <div class="small-12 columns text-center">
+    <h1>We make elegant apps.</h1>
+  </div>
+</header>
+<section class="products text-center">
+  <div class="row">
+    <form class="payment-form" action="/api/payment/approve" method="post">
+      <label class="payment-form-label">Date</label>
+      <input class="payment-form-field" type="text" disabled value="<%= payment.createdAt.toISOString().replace('T', ' ').replace(/\.\d{3}Z/, '') %>"><br/>
+      <label class="payment-form-label">PaymentId</label>
+      <input class="payment-form-field" type="text" disabled value="<%= payment.paymentId %>"><br/>
+      <label class="payment-form-label">Sale Id</label>
+      <input class="payment-form-field" type="text" disabled value="<%= payment.saleId %>"><br/>
+      <label class="payment-form-label">State</label>
+      <input class="payment-form-field" type="text" disabled value="<%= payment.state %>"><br/>
+      <label class="payment-form-label">Software</label>
+      <input class="payment-form-field" type="text" disabled value="<%= payment.soft %>"><br/>
+      <label class="payment-form-label">Customer Name</label>
+      <input class="payment-form-field" type="text" disabled value="<%= payment.customerName %>"><br/>
+      <label class="payment-form-label">Customer Email</label>
+      <input class="payment-form-field" type="text" disabled value="<%= payment.customerEmail %>"><br/>
+      <label class="payment-form-label">Pay Type</label>
+      <input class="payment-form-field" type="text" disabled value="<%= payment.type %>"><br/>
+      <label class="payment-form-label">Payer Id</label>
+      <input class="payment-form-field" type="text" disabled value="<%= payment.payerId %>"><br/>
+      <label class="payment-form-label">Payer Eamil</label>
+      <input class="payment-form-field" type="text" disabled value="<%= payment.payerEmail %>"><br/>
+
+      <input type="hidden" name="saleId" value="<%= payment.saleId %>"><br/>
+      <input class="payment-form-submit" type="submit" <%= payment.state === 'approved' ? 'disabled' : '' %> value="<%= payment.state === 'approved' ? 'Has Approved' : 'Approve' %> %>">
+      <!-- <input class="payment-form-submit" type="submit" value="Approve"> -->
+    </form>
+  </div>
+</section>
+
+
+<% include _footer %>

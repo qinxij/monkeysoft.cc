@@ -1,0 +1,68 @@
+<% include _header %>
+
+<link rel="stylesheet" href="/css/app.css">
+
+<header class="text-center">
+  <h1>Sign up Site Admin</h1>
+</header>
+
+<div class="row text-center">
+
+  <% include _page_msg %>
+
+  <form class="form" name="form-signup" action="/signup" method="post">
+    <label for="username">Username</label>
+    <input name="username" type="text" class="field"
+      placeholder="Username" required autofocus><br>
+    <div class="field-description">
+      <div class="validate-msg" id="username-vd-msg"></div>
+    </div>
+    <br>
+
+    <label for="password">Password</label>
+    <input name="password" type="password" class="field" placeholder="Password"><br>
+    <div class="field-description">
+      <div class="validate-msg" id="password-vd-msg"></div>
+    </div>
+    <br>
+    <label for="password-confirm">Confirm</label>
+    <input name="password-confirm" type="password" class="field" placeholder="Password"><br>
+    <div class="field-description">
+      <div class="validate-msg" id="password-confirm-vd-msg"></div>
+    </div>
+    <br>
+    <input type="submit" value="Sign up" class="try">
+  </form>
+</div>
+
+<script>
+ var validatorEditAdmin = new FormValidator('form-signup', [{
+   name: 'username',
+   rules: 'required'
+ }, {
+   name: 'password',
+   display: 'password',
+   rules: 'required|min_length[9]|max_length[20]'
+ }, {
+   name: 'password-confirm',
+   display: 'password confirmation',
+   rules: 'required|matches[password]'
+ }], function(errors, event) {
+   var validateNotes = {
+     username: document.getElementById('username-vd-msg'),
+     password: document.getElementById('password-vd-msg'),
+     'password-confirm': document.getElementById('password-confirm-vd-msg')
+   };
+   validateNotes.username.innerText = '';
+   validateNotes.password.innerText = '';
+   validateNotes['password-confirm'].innerText = '';
+   if (errors.length > 0) {
+     // Show the errors
+     errors.forEach(function(e) {
+       validateNotes[e.name].innerText = e.message;
+     });
+   }
+ });
+</script>
+
+<% include _footer %>

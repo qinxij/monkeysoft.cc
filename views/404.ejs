@@ -1,0 +1,60 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="We're 25.io, we make elegant apps for Mac.">
+    <meta name="apple-mobile-web-app-title" content="25.io">
+    <title>Monkeysoft | Elegant apps</title>
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/main.css">
+    <style>
+     body {
+       text-align: center;
+       background-image: radial-gradient(circle farthest-corner at 50% 50% , #fafafa 0%,  #bbb 95%);
+     }
+     .content {
+       position: absolute;
+       width: 400px;
+       height: 510px;
+       text-align: center;
+       top: calc(50vh - 250px);
+       left: calc(50% - 200px);
+     }
+     img.e404 {
+       width: 320px;
+     }
+     h1 {
+       font-size: 72px;
+     }
+     .message {
+     }
+     #remain {
+       color: green;
+       font-size: 1.2rem;
+     }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div class="message">
+        <h1>404</h1>
+        <h3>哎呀。。。您访问的页面不存在</h3>
+        <p><span id="remain">5</span> 秒内返回网站主页.</p>
+      </div>
+      <img class="e404" src="<%= errorImg %>">
+    </div>
+    <script>
+     var remainNode = document.querySelector('#remain');
+     var remain = 5;
+     setInterval(function() {
+       remain -= 1;
+       remainNode.innerText = '' + remain;
+       if (remain === 0) {
+         location.href = location.protocol + '//' + location.host;
+       }
+     }, 1000);
+    </script>
+  </body>
+</html>

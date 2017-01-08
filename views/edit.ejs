@@ -1,0 +1,61 @@
+<% include _header %>
+
+<link rel="stylesheet" href="/css/app.css">
+
+<header class="text-center">
+  <div class="small-12 columns text-center">
+  <h1>Edit your profile</h1>
+  </div>
+</header>
+
+<section class="products text-center">
+<div class="row">
+
+  <% include _admin_nav %>
+
+  <% include _page_msg %>
+
+  <form name="edit-admin" class="form" action="/edit" method="post">
+    <label for="password">Password</label>
+    <input name="password" type="password" class="field" ><br>
+    <div class="field-description">
+      <div class="validate-msg" id="password-vd-msg"></div>
+    </div>
+    <br>
+    <label for="password-confirm">Confirm</label>
+    <input name="password-confirm" type="password" class="field" ><br>
+    <div class="field-description">
+      <div class="validate-msg" id="password-confirm-vd-msg"></div>
+    </div>
+    <br>
+    <input type="submit" value="Update password" class="try">
+  </form>
+</div>
+</section>
+
+<script>
+ var validatorEditAdmin = new FormValidator('edit-admin', [{
+   name: 'password',
+   display: 'password',
+   rules: 'required|min_length[9]|max_length[20]'
+ }, {
+   name: 'password-confirm',
+   display: 'password confirmation',
+   rules: 'required|matches[password]'
+ }], function(errors, event) {
+   var validateNotes = {
+     password: document.getElementById('password-vd-msg'),
+     'password-confirm': document.getElementById('password-confirm-vd-msg')
+   };
+   validateNotes.password.innerText = '';
+   validateNotes['password-confirm'].innerText = '';
+   if (errors.length > 0) {
+     // Show the errors
+     errors.forEach(function(e) {
+       validateNotes[e.name].innerText = e.message;
+     });
+   }
+ });
+</script>
+
+<% include _footer %>

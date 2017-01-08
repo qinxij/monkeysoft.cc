@@ -1,0 +1,151 @@
+<% include _header %>
+
+<link rel="stylesheet" href="/css/app.css">
+
+<style>
+ .content {
+   text-align: center;
+   margin: 40px;
+   padding-top: 10px;
+ }
+ .content p {
+   text-align: center;
+ }
+ .title {
+   font-size: 32px;
+ }
+ .icon {
+   margin: 20px;
+ }
+ .qrcode {
+   margin-top: -100px;
+   margin-bottom: 30px;
+   border: 2px solid white;
+ }
+ .sa-price {
+   font-size: 36px;
+   color: rgb(51,160,255);
+   margin: -12px 0 12px;
+ }
+ .other-pay-type {
+   font-size: 14px;
+   line-height: 26px;
+ }
+ .other-pay-type span {
+   color: red;
+ }
+ .switch-button {
+   border-radius: 6px;
+   padding: 1px 6px;
+   margin: 0 5px;
+   background: linear-gradient(0deg, rgb(52,180,255), rgb(51,160,255), rgb(52,180,255));
+   color: white;
+ }
+ .sa-hide {
+   display: none;
+ }
+</style>
+
+<div class="content">
+  <h2 class="title">Order <%= soft %></h2>
+  <img class="icon" src="<%= icon %>" width="200px" height="200px">
+
+  <% include _page_msg %>
+
+  <div id="not-paied">
+    <img class="qrcode" src="<%= qrCodeImage %>" width="150px" height="150px">
+
+    <div class="sa-price">¥<%= price.cn %></div>
+
+    <p>由于通过支付宝我们无法获取您的 email 和 username, 您付款成功后请凭交易号, 在本页面获取注册码.<br> 如有疑问请联系我们(sp@monkeysoft.cc)</p>
+
+    <p>已付款？ 请<a id="sa-switch-button" class="switch-button" onclick="switchHidden();">输入注册信息</a>获取注册码</p>
+  </div>
+
+  <div id="paied" class="sa-hide">
+    <form class="form" name="pay-form" method="post" action="/api/pay/get-license">
+      <input type="hidden" name="soft" value="<%= soft %>">
+
+      <label for="email">邮箱</label>
+      <input class="field" name="email" type="text" placeholder="username@example.com" /> <br>
+      <div class="field-description">
+        用来接收注册码的电子邮箱.
+        <div class="validate-msg" id="email-vd-msg"></div>
+      </div>
+      <br>
+      <label for="username">用户名</label>
+      <input class="field" name="username" type="text" placeholder="username" /> <br>
+      <div class="field-description">
+        邮箱地址和用户名将与注册码一起作为您的注册信息。
+        <div class="validate-msg" id="username-vd-msg"></div>
+      </div>
+      <br>
+      <label for="saleId">交易码</label>
+      <input class="field" name="saleId" type="text" placeholder="支付宝交易码" /> <br>
+      <div class="field-description">
+        这是你支付宝付款后的交易码。还未付款吗？<a class="switch-button" onclick="switchHidden();">点这里付款</a>
+        <div class="validate-msg" id="saleId-vd-msg"></div>
+      </div>
+      <br>
+      <input class="radio field" name="paytype" type="hidden" value="alipay" checked="true" data-svalue="支付宝支付 ¥<%= price.cn %>" />
+      <br>
+      <input type="submit" id ="store-form-submit" class="try" value="获取注册码">
+    </form>
+
+  </div>
+
+  <a class="other-pay-type" href="/store/<%= soft.toLowerCase() %>">Or Pay via <span>Paypal</span></a>
+
+  <script>
+   var validator = new FormValidator('pay-form', [{
+     name: 'email',
+     display: '邮箱',
+     rules: 'required|valid_email'
+   }, {
+     name: 'username',
+     display: '用户名',
+     rules: 'required|min_length[4]|max_length[15]'
+   }, {
+     name: 'saleId',
+     display: '交易号',
+     rules: 'required'
+   }], function(errors, event) {
+     var validateNotes = {
+       email: document.getElementById('email-vd-msg'),
+       username: document.getElementById('username-vd-msg'),
+       saleId: document.getElementById('saleId-vd-msg')
+     };
+     validateNotes.email.innerText = '';
+     validateNotes.username.innerText = '';
+     validateNotes.saleId.innerText = '';
+     if (errors.length > 0) {
+       // Show the errors
+       /* console.log(errors); */
+       errors.forEach(function(e) {
+         validateNotes[e.name].innerText = e.message;
+       });
+     }
+   });
+
+   function switchHidden(e) {
+     console.log('Switch Hidden');
+     var notPaied = document.getElementById('not-paied');
+     var paied = document.getElementById('paied');
+     if (notPaied.classList.contains('sa-hide')) {
+       notPaied.classList.remove('sa-hide');
+       paied.classList.add('sa-hide');
+     } else {
+       notPaied.classList.add('sa-hide');
+       paied.classList.remove('sa-hide');
+     }
+   }
+
+   /* var switchButton = document.getElementById('sa-switch-button');
+      console.log(switchButton);
+      switchButton.onchange = switchHidden;
+    */
+  </script>
+</div>
+
+
+<% include _footer %>

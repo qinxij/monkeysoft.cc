@@ -1,0 +1,65 @@
+<% include _header %>
+
+<link rel="stylesheet" href="/css/app.css">
+
+<header class="text-center">
+  <div class="small-12 columns text-center">
+    <h1>Log in Site Admin</h1>
+  </div>
+</header>
+
+<div class="row text-center">
+
+  <% if (currentUser) { %>
+    <% include _admin_nav %>
+    <h2 style="color: green;">You have already logged in as <%= currentUser.name() %>.</h2>
+  <% } else { %>
+
+    <% include _page_msg %>
+
+    <form class="form" name="form-login" action="/login" method="post">
+      <label for="username">Username</label>
+      <input name="username" type="text" class="field"
+        placeholder="Username" required autofocus><br>
+      <div class="field-description">
+        <div class="validate-msg" id="username-vd-msg"></div>
+      </div>
+      <br>
+
+      <label for="password">Password</label>
+      <input name="password" type="password" class="field" placeholder="Password"><br>
+      <div class="field-description">
+        <div class="validate-msg" id="password-vd-msg"></div>
+      </div>
+      <br>
+
+      <input type="submit" value="Log in" class="try">
+    </form>
+</div>
+
+<script>
+ var validator = new FormValidator('form-login', [{
+   name: 'username',
+   rules: 'required'
+ }, {
+   name: 'password',
+   display: 'password',
+   rules: 'required'
+ }], function(errors, event) {
+   var validateNotes = {
+     username: document.getElementById('username-vd-msg'),
+     password: document.getElementById('password-vd-msg')
+   };
+   validateNotes.username.innerText = '';
+   validateNotes.password.innerText = '';
+   if (errors.length > 0) {
+     // Show the errors
+     errors.forEach(function(e) {
+       validateNotes[e.name].innerText = e.message;
+     });
+   }
+ });
+</script>
+  <% } %>
+
+  <% include _footer %>

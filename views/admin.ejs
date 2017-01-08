@@ -1,0 +1,123 @@
+<% include _header %>
+
+<style>
+ .del-icon {
+   display: none;
+ }
+ .del-icon.show {
+   display: inline-block;
+   cursor: pointer;
+ }
+ .admin-c-approved {
+   color: green;
+ }
+ .admin-c-needapprove {
+   color: red;
+ }
+ #admin-toggle-edit, #admin-submit {
+   text-align: center;
+   width: 80px;
+   height: 22px;
+   background-color: #444;
+   color: white;
+   border-radius: 10px;
+   outline: none;
+   margin: 0 10px;
+ }
+ #admin-submit {
+   display: none;
+ }
+ #admin-submit.show {  display: initial; }
+ #pm-list tr.strike-through td {
+   text-decoration: line-through;
+   color: red;
+ }
+</style>
+
+<header>
+  <div class="small-12 columns text-center">
+    <h1>Admin</h1>
+  </div>
+</header>
+<section class="products text-center">
+  <div class="row">
+
+    <% include _admin_nav %>
+
+    <% include _page_msg %>
+
+    <div>
+      <form action="/deletepayments" method="post">
+        <input type="hidden" name="payments" value="" id="admin-form-payments"/>
+        <input class="" type="button" onclick="onclickToggleEdit();" id="admin-toggle-edit" value="Edit">
+        <input class="" type="submit" id="admin-submit" value="Submit">
+      </form>
+    </div>
+    <table style="width: 100%; text-align: left; margin-top: 14px;">
+      <thead>
+        <tr>
+          <th>Pd</th>
+          <th>Date</th>
+          <th>Pay T</th>
+          <th>Payment Id</th>
+          <th>Sale Id</th>
+          <th>Soft</th>
+          <th>Cus Name</th>
+          <th>Cus Email</th>
+          <!-- <th>Payer Email</th> -->
+          <th class="del-icon">x</th>
+        </tr>
+      </thead>
+      <tbody id="pm-list">
+        <% payments.forEach(function(pm, index) { %>
+          <tr id="admin-pl-<%= index %>">
+            <td class="<%= pm.state === 'approved' ? 'admin-c-approved' : 'admin-c-needapprove' %>"><%= pm.state === 'approved' ? '🔵' : '🔴' %></td>
+            <td><%= normalizedate(pm.createdAt) %></td>
+            <td><%= pm.type %></td>
+            <td><a href="/payment/<%= pm.paymentId %> %>"><%= pm.paymentId %></a></td>
+            <td><%= pm.saleId %></td>
+            <td><%= pm.soft %></td>
+            <td><%= pm.customerName %></td>
+            <td><%= pm.customerEmail %></td>
+            <!-- <td><%= pm.payerEmail %></td> -->
+            <td class="del-icon" onclick="onclickDel(<%= index %>, '<%= pm.paymentId %>')">x</td></tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<script>
+ function onclickToggleEdit() {
+   var btnToggle = document.getElementById('admin-toggle-edit');
+   var btnSubmit = document.getElementById('admin-submit');
+   var delBtns = document.getElementsByClassName('del-icon');
+
+   var classMethod;
+   if (btnToggle.value === 'Edit') {
+     classMethod = 'add';
+     btnToggle.value = 'Cancel';
+   } else {
+     classMethod = 'remove';
+     btnToggle.value = 'Edit';
+   }
+
+   btnSubmit.classList[classMethod]('show');
+   for (var i =0; i < delBtns.length; ++i) {
+     delBtns[i].classList[classMethod]('show');
+   }
+ }
+
+ function onclickDel(index, paymentId) {
+   var row = document.getElementById(`admin-pl-${index}`);
+   var paymentsField = document.getElementById('admin-form-payments');
+   row.classList.toggle('strike-through');
+   /* var paymentId = row.children[1].innerText; */
+   /* consle.log(paymentId); */
+   paymentsField.classList.toggle(paymentId);
+   paymentsField.value = paymentsField.classList;
+ }
+</script>
+
+
+<% include _footer %>
