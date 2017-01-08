@@ -58,7 +58,8 @@ const monkeydownData = {
 const ghstarsData = {
   title: 'GHstars',
   subTitle: 'Manage your GitHub starred repositories with groups and tags',
-  icon: 'http://oc0fp7t3p.bkt.clouddn.com/16-12-13/28974512-file_1481626407896_6e6b.png',
+  // icon: 'http://oc0fp7t3p.bkt.clouddn.com/16-12-13/28974512-file_1481626407896_6e6b.png',
+  icon: '/img/ghstars/ghstars-padding.png',
   appImg: 'http://oc0fp7t3p.bkt.clouddn.com/16-12-13/69859106-file_1481626393901_350d.png',
   description: ' helps you to orgnize your starred repositories on Github with groups and tags. You can put repositories to group or tag them. The app provides a handy search bar so you can find a repository quickly.',
   features: [
