@@ -1,3 +1,7 @@
+body * {
+  font-family: Avenir, "proxima-nova", Helvetica, Arial, sans-serif;
+}
+
 /* ================== */
 /* tab bar            */
 /* ================== */
@@ -13,6 +17,10 @@
 
 .tab-bar a {
   color: #7d7d7d;
+  font-weight: 500;
+}
+.tab-bar a:hover {
+  border-bottom: 1px solid rgba(90,90,90,.4);
 }
 
 .main-nav .logo {
@@ -63,6 +71,15 @@
 
 .push, .pushy {
   transition: transform 0.5s cubic-bezier(0.16, 0.68, 0.43, 0.99);
+}
+
+
+/* ================== */
+/* custom foundation  */
+/* ================== */
+
+.row {
+  max-width: 68.75rem;
 }
 
 
