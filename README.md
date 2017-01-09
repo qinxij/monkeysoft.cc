@@ -14,8 +14,8 @@ The site is implemented using multiple font-end technology stack, each belongs t
 
 Clone the project and change to the root directory of the project folder with your terminal.
 
-`sh
+```sh
 npm run local
-`
+```
 
 Then open [http://localhost:8000](http://localhost:8000) in your favorite web browser.
