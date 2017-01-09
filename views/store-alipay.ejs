@@ -1,56 +1,13 @@
 <% include _header %>
 
-<style>
- .content {
-   text-align: center;
-   margin: 40px;
-   padding-top: 10px;
- }
- .content p {
-   text-align: center;
- }
- .title {
-   font-size: 32px;
- }
- .icon {
-   margin: 20px;
- }
- .qrcode {
-   margin-top: -100px;
-   margin-bottom: 30px;
-   border: 2px solid white;
- }
- .sa-price {
-   font-size: 36px;
-   color: rgb(51,160,255);
-   margin: -12px 0 12px;
- }
- .other-pay-type {
-   font-size: 14px;
-   line-height: 26px;
- }
- .other-pay-type span {
-   color: red;
- }
- .switch-button {
-   border-radius: 6px;
-   padding: 1px 6px;
-   margin: 0 5px;
-   background: linear-gradient(0deg, rgb(52,180,255), rgb(51,160,255), rgb(52,180,255));
-   color: white;
- }
- .sa-hide {
-   display: none;
- }
-</style>
 
-<div class="content">
+<div class="sa-content">
   <h2 class="title">Order <%= soft %></h2>
   <img class="icon" src="<%= icon %>" width="200px" height="200px">
 
   <% include _page_msg %>
 
-  <div id="not-paied">
+  <div id="js-not-paied">
     <img class="qrcode" src="<%= qrCodeImage %>" width="150px" height="150px">
 
     <div class="sa-price">¥<%= price.cn %></div>
@@ -60,7 +17,7 @@
     <p>已付款？ 请<a class="switch-button" onclick="storeAlipay_switchHidden();">输入注册信息</a>获取注册码</p>
   </div>
 
-  <div id="paied" class="sa-hide">
+  <div id="js-paied" class="sa-hide">
     <form class="form" name="js-storealipay-form" method="post" action="/api/pay/get-license">
       <input type="hidden" name="soft" value="<%= soft %>">
 

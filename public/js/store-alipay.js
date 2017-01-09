@@ -29,8 +29,8 @@ var storeAlipay_validator = new FormValidator('js-storealipay-form', [{
 
 function storeAlipay_switchHidden(e) {
   console.log('Switch Hidden');
-  var notPaied = document.getElementById('not-paied');
-  var paied = document.getElementById('paied');
+  var notPaied = document.getElementById('js-not-paied');
+  var paied = document.getElementById('js-paied');
   if (notPaied.classList.contains('sa-hide')) {
     notPaied.classList.remove('sa-hide');
     paied.classList.add('sa-hide');

@@ -88,234 +88,374 @@ body * {
 /* ================== */
 
 img {
-    display: inline-block;
-    vertical-align: middle
+  display: inline-block;
+  vertical-align: middle
 }
 
 .ghstars {
-    color: #ff8022
+  color: #ff8022
 }
 
 .monkeydown {
-    color: #2f8da7
+  color: #2f8da7
 }
 
 a.ghstars:hover {
-    color: #ee6500
+  color: #ee6500
 }
 
 a.monkeydown:hover {
-    color: #104152
+  color: #104152
 }
 
 #home {
-    color: #454545
+  color: #454545
 }
 
 #home header {
-    margin: 20px auto;
-    font-weight: 100;
-    line-height: 120%
+  margin: 20px auto;
+  font-weight: 100;
+  line-height: 120%
 }
 
 @media only screen and (min-width:40.063em) {
-    #home header {
-        margin: 40px auto
-    }
+  #home header {
+    margin: 40px auto
+  }
 }
 
 #home header span {
-    color: #2699da
+  color: #2699da
 }
 
 #home header h1 {
-    font-size: 1.2rem;
-    max-width: 800px;
-    margin: 0 auto;
-    color: #454545
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #454545
 }
 
 .note, footer {
-    font-size: 1.2rem
+  font-size: 1.2rem
 }
 
 .note span {
-    display: block;
-    margin: 20px auto 0 auto;
-    padding-bottom: 30px;
-    border-bottom: 1px solid #ccc
+  display: block;
+  margin: 20px auto 0 auto;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #ccc
 }
 
 #questions {
-    padding: 0;
-    border: 0
+  padding: 0;
+  border: 0
 }
 
 @media only screen and (min-width:40.063em) {
-    #home header h1 {
-        font-size: 2.7rem
-    }
-    .note, footer {
-        font-size: 1.5rem
-    }
-    .note span {
-        display: inline-block
-    }
-    #questions {
-        border-bottom: 1px solid #ccc;
-        margin: 20px auto 0 auto;
-        padding-bottom: 30px;
-        border-bottom: 1px solid #ccc
-    }
+  #home header h1 {
+    font-size: 2.7rem
+  }
+  .note, footer {
+    font-size: 1.5rem
+  }
+  .note span {
+    display: inline-block
+  }
+  #questions {
+    border-bottom: 1px solid #ccc;
+    margin: 20px auto 0 auto;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #ccc
+  }
 }
 
 #home .products {
-    margin: 30px 0
+  margin: 30px 0
 }
 
 #home .products .columns {
-    padding: 0
+  padding: 0
 }
 
 #home .products .addition-container {
-    background-color: #dfdfdf;
-    position: relative;
-    top: -4px;
-    padding: 20px 20px
+  background-color: #dfdfdf;
+  position: relative;
+  top: -4px;
+  padding: 20px 20px
 }
 
 @media only screen and (min-width:40.063em) {
-    #home .products .addition-container {
-        padding: 20px 60px
-    }
+  #home .products .addition-container {
+    padding: 20px 60px
+  }
 }
 
 @media only screen and (min-width:64.063em) {
-    #home .products .addition-container {
-        padding: 20px 60px
-    }
+  #home .products .addition-container {
+    padding: 20px 60px
+  }
 }
 
 #home .products .addition-container h2 {
-    color: #454545;
-    font-size: 25px;
-    font-weight: 100;
-    position: relative;
-    top: 3px
+  color: #454545;
+  font-size: 25px;
+  font-weight: 100;
+  position: relative;
+  top: 3px
 }
 
 #home .products .product-container {
-    position: relative;
-    height: 470px
+  position: relative;
+  height: 470px
 }
 
 @media only screen and (min-width:40.063em) {}
 
 @media only screen and (min-width:64.063em) {
-    #home .products .product-container {
-        height: 490px
-    }
+  #home .products .product-container {
+    height: 490px
+  }
 }
 
 #home .products .product-container.ghstars {
-    /* background-color: #7aeddd; */
-    margin-left: -2px;
-    margin-right: -2px
+  /* background-color: #7aeddd; */
+  margin-left: -2px;
+  margin-right: -2px
 }
 
 #home .products .product-container.ghstars span {
-    max-width: 350px;
-    margin: 0 auto
+  max-width: 350px;
+  margin: 0 auto
 }
 
 #home .products .product-container.monkeydown {
-    /* background-color: #65e8d4; */
-    margin-left: -2px;
-    margin-right: -2px
+  /* background-color: #65e8d4; */
+  margin-left: -2px;
+  margin-right: -2px
 }
 
 #home .products .product-container.smaller {
-    /* background-color: #65e8d4; */
-    margin-left: -2px;
-    margin-right: -2px
+  /* background-color: #65e8d4; */
+  margin-left: -2px;
+  margin-right: -2px
 }
 
 #home .products .product-container a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 20
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 20
 }
 
 #home .products .product-container .product {
-    width: 75%;
-    height: 80%;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0
+  width: 75%;
+  height: 80%;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0
 }
 
 #home .products .product-container .product .logo {
-    margin-bottom: 10px
+  margin-bottom: 10px
 }
 
 #home .products .product-container .product h2 {
-    /* color: #fff; */
-    font-size: 2.625rem
+  /* color: #fff; */
+  font-size: 2.625rem
 }
 
 #home .products .product-container .product h2 .new {
-    display: inline-block;
-    vertical-align: 20%;
-    border: 2px solid #fff;
-    border-radius: 6px;
-    margin-left: 10px;
-    padding: 2px 15px;
-    font-size: 1.25rem;
-    color: #fff
+  display: inline-block;
+  vertical-align: 20%;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  margin-left: 10px;
+  padding: 2px 15px;
+  font-size: 1.25rem;
+  color: #fff
 }
 
 @media only screen and (min-device-width:320px) and (max-device-width:568px), only screen and (min-device-width:320px) and (max-device-width:480px) {
-    #home .products .product-container .product h2 .new {
-        vertical-align: 23%
-    }
+  #home .products .product-container .product h2 .new {
+    vertical-align: 23%
+  }
 }
 
 #home .products .product-container .product span {
-    display: block;
-    font-size: 1.5rem;
-    font-weight: 400;
-    line-height: 120%;
-    color: #444;
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 120%;
+  color: #444;
 }
 
 #home .links {
-    font-size: 1.5rem
+  font-size: 1.5rem
 }
 
 #home .links span {
-    display: block;
-    margin: 20px auto
+  display: block;
+  margin: 20px auto
 }
 
 #home .links span a {
-    color: #2699da
+  color: #2699da
 }
 
 #home.localised header {
-    margin-bottom: 20px
+  margin-bottom: 20px
 }
 
 #home.localised header h1 {
-    font-size: 3.125rem
+  font-size: 3.125rem
 }
 
 header h1 {
-    padding-bottom: 15px;
-    padding-top: 5px
+  padding-bottom: 15px;
+  padding-top: 5px
 }
+
+
+/* ================== */
+/* admin page         */
+/* ================== */
+.admin-del-icon {
+  display: none;
+}
+.admin-del-icon.show {
+  display: inline-block;
+  cursor: pointer;
+}
+.admin-c-approved {
+  color: green;
+}
+.admin-c-needapprove {
+  color: red;
+}
+.admin-toggle-edit, .admin-submit {
+  text-align: center;
+  width: 80px;
+  height: 22px;
+  background-color: #444;
+  color: white;
+  border-radius: 10px;
+  outline: none;
+  margin: 0 10px;
+}
+.admin-submit {
+  display: none;
+}
+.admin-submit.show {  display: initial; }
+.admin-payment-list tr.strike-through td {
+  text-decoration: line-through;
+  color: red;
+}
+
+/* ================== */
+/* alipay page        */
+/* ================== */
+.alipay-content {
+  text-align: center;
+  margin: 40px;
+  padding-top: 10px;
+}
+.alipay-content .title {
+  font-size: 32px;
+}
+.alipay-content .icon {
+  margin: 20px;
+}
+
+/* ================== */
+/* store page         */
+/* ================== */
+.payment-form-label {
+  display: inline-block;
+  width: 10%;
+  text-align: right;
+  margin-right: 10px;
+}
+.payment-form .payment-form-field {
+  display: inline-block;
+  width: 70%;
+}
+.payment-form-submit {
+  background-color: rgb(51,160,255);
+  color: white;
+}
+.payment-form-submit[disabled] {
+  background-color: rgb(51,60,55);
+  color: white;
+}
+
+/* ================== */
+/* store page         */
+/* ================== */
+.store-content {
+  text-align: center;
+  margin: 40px;
+  padding-top: 10px;
+}
+.store-content .title {
+  font-size: 32px;
+}
+.store-content .icon {
+  margin: 20px;
+}
+.store-content .other-pay-type {
+  font-size: 14px;
+  line-height: 26px;
+}
+.store-content .other-pay-type span {
+  color: red;
+}
+
+/* ================== */
+/* store-alipay page  */
+/* ================== */
+ .sa-content {
+   text-align: center;
+   margin: 40px;
+   padding-top: 10px;
+ }
+ .sa-content p {
+   text-align: center;
+ }
+ .sa-content .title {
+   font-size: 32px;
+ }
+ .sa-content .icon {
+   margin: 20px;
+ }
+ .sa-content .qrcode {
+   margin-top: -100px;
+   margin-bottom: 30px;
+   border: 2px solid white;
+ }
+ .sa-content .sa-price {
+   font-size: 36px;
+   color: rgb(51,160,255);
+   margin: -12px 0 12px;
+ }
+ .sa-content .other-pay-type {
+   font-size: 14px;
+   line-height: 26px;
+ }
+ .sa-content .other-pay-type span {
+   color: red;
+ }
+ .sa-content .switch-button {
+   border-radius: 6px;
+   padding: 1px 6px;
+   margin: 0 5px;
+   background: linear-gradient(0deg, rgb(52,180,255), rgb(51,160,255), rgb(52,180,255));
+   color: white;
+ }
+ .sa-content .sa-hide {
+   display: none;
+ }
